@@ -1,21 +1,41 @@
 # NewWave OWASP Security Lab
 
-OWASP LLM Top 10 (2025) security lab for regulated finance. Unsafe vs hardened investment-banking assistant with live model evidence and OWASP control mapping.
+OWASP LLM Top 10 (2025) security lab for regulated finance, mapped to OWASP LLM Top 10, MITRE ATLAS, and NIST AI RMF. Unsafe vs hardened investment-banking assistant with live model evidence and OWASP control mapping.
 
 Local Streamlit demo. Same fictional attack prompt runs against two instruction sets side by side: an intentionally unsafe configuration and a safer banking-oriented configuration. Responses come from real model APIs, not hardcoded text.
 
-**Coverage**: 4 of 10 OWASP LLM risks have archived live capture and screenshots. The rest are mapped as architectural gaps or partial control notes. See the [coverage matrix](docs/owasp_coverage.md) and [evidence index](docs/README.md). [Executive summary](docs/executive-summary.md) for resume-facing overview.
+**Coverage today**: **4 of 10** OWASP LLM risks are **Demonstrated** with archived capture and screenshots (Phase 2). Three additional scenarios (LLM05, LLM09, LLM10) are in the app but Phase 3 capture is **blocked** until a valid API key is configured. See [coverage matrix](docs/owasp_coverage.md) and [Phase 3 capture status](evidence/phase3_capture_status.md). [Executive summary](docs/executive-summary.md) for resume-facing overview.
 
-**In progress**: [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org) extension (ASI01 through ASI10). Not shipped in this repo yet.
+**In progress**: [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org) (ASI01 through ASI10). Not shipped in this repo yet.
 
-## Demonstrated scenarios
+## Demonstrated scenarios (Phase 2)
 
-| Scenario | OWASP LLM 2025 | Evidence |
+| Scenario | OWASP LLM 2025 | MITRE ATLAS |
 | --- | --- | --- |
-| Prompt Injection | LLM01 | [capture](evidence/phase2_capture.json), [screenshots](evidence/screenshots/README.md) |
-| Sensitive Information Disclosure | LLM02 | [capture](evidence/phase2_capture.json), [screenshots](evidence/screenshots/README.md) |
-| System Prompt Leakage | LLM07 | [capture](evidence/phase2_capture.json), [screenshots](evidence/screenshots/README.md) |
-| Excessive Agency | LLM06 | [capture](evidence/phase2_capture.json), [screenshots](evidence/screenshots/README.md) |
+| Prompt Injection | LLM01 | AML.T0051; indirect AML.T0051.001 |
+| Sensitive Information Disclosure | LLM02 | AML.T0057 LLM Data Leakage |
+| System Prompt Leakage | LLM07 | AML.T0056 Extract LLM System Prompt |
+| Excessive Agency | LLM06 | |
+
+Evidence: [phase2 capture](evidence/phase2_capture.json), [screenshots](evidence/screenshots/README.md).
+
+## Scenarios in app (capture pending)
+
+| Scenario | OWASP LLM 2025 |
+| --- | --- |
+| Improper Output Handling | LLM05 |
+| Misinformation | LLM09 |
+| Unbounded Consumption | LLM10 |
+
+Run `python tools/capture_phase3_evidence.py` after setting a valid `GEMINI_API_KEY`.
+
+## Assessed-not-demonstrated
+
+| LLM ID | Notes |
+| --- | --- |
+| LLM03 Supply Chain | [Architectural note](evidence/llm03_supply_chain_assessment.md) |
+| LLM04 Data and Model Poisoning | Planned |
+| LLM08 Vector and Embedding Weaknesses | Planned |
 
 Control mapping: [safe controls to OWASP](evidence/safe_controls_to_owasp.md), [input separation](evidence/input_separation_control.md).
 
@@ -65,7 +85,7 @@ Exact wording varies by provider, model, and run.
 app.py                 Streamlit demo (unsafe vs safe)
 docs/                  Coverage matrix, executive summary, doc index
 evidence/              Phase 2 capture, tables, screenshots, control extracts
-tools/                 Screenshot regeneration script
+tools/                 Capture and screenshot scripts
 ```
 
 ## References
@@ -74,6 +94,8 @@ This project maps to:
 
 - **OWASP Top 10 for LLM Applications 2025** (published 2024-11-18), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 - **OWASP Top 10 for Agentic Applications 2026** (published 2025-12), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- **MITRE ATLAS** (technique IDs cited in coverage matrix where verified)
+- **NIST AI RMF 1.0** (Govern, Map, Measure, Manage; see executive summary)
 
 Official project pages: [genai.owasp.org](https://genai.owasp.org)
 

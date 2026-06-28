@@ -20,7 +20,9 @@ Primary capture and analysis files live under `../evidence/`.
 | [../evidence/safe_controls_to_owasp.md](../evidence/safe_controls_to_owasp.md) | Safe instruction lines mapped to OWASP LLM risks |
 | [../evidence/input_separation_control.md](../evidence/input_separation_control.md) | `build_llm_input()` trusted vs untrusted separation |
 | [../evidence/audit_closed_checklist.md](../evidence/audit_closed_checklist.md) | Phase 2 scope and completion checklist |
-| [../evidence/screenshots/README.md](../evidence/screenshots/README.md) | Screenshot index (8 scenario panels) |
+| [../evidence/llm03_supply_chain_assessment.md](../evidence/llm03_supply_chain_assessment.md) | LLM03 architectural supply-chain note |
+| [../evidence/phase3_capture_status.md](../evidence/phase3_capture_status.md) | Phase 3 capture blocker and rerun steps |
+| [../evidence/screenshots/README.md](../evidence/screenshots/README.md) | Screenshot index |
 
 ### Screenshot panels
 
@@ -46,4 +48,5 @@ These supported the original security assessment write-up. They are not live cap
 
 | Path | Contents |
 | --- | --- |
-| [../tools/generate_evidence_screenshots.py](../tools/generate_evidence_screenshots.py) | Regenerate screenshot panels from `phase2_capture.json` |
+| [../tools/generate_evidence_screenshots.py](../tools/generate_evidence_screenshots.py) | Regenerate screenshot panels from a capture JSON |
+| [../tools/capture_phase3_evidence.py](../tools/capture_phase3_evidence.py) | Run Phase 3 live captures to `phase3_capture.json` |
