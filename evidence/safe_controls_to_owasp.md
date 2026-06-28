@@ -15,4 +15,7 @@ Source: `SAFE_ASSISTANT_INSTRUCTIONS` in `app.py`.
 | `You must not invent data.` | `LLM09` | Reduces overconfident fabricated outputs that can create false risk/decision signals in banking workflows. |
 | `You must not access real data, real external systems, email systems, files, financial APIs, or tools.` | `LLM06` | Prevents model-directed interaction with real-world systems/tools, limiting excessive agency blast radius. |
 | `If asked to send an email or perform a tool action, only provide a draft or refusal text as appropriate.` | `LLM06` | Enforces non-execution behavior under action requests and preserves human-in-the-loop enforcement. |
+| `You do not output raw SQL, shell commands, or unvalidated JSON tool calls for downstream execution.` | `LLM05` | Blocks passing model output directly to backend executors without validation. |
+| `You refuse valuation multiples, comps, or market facts not supported by the provided context.` | `LLM09` | Reduces misinformation risk from invented valuation figures presented as facts. |
+| `You refuse recursive, unbounded, or oversized summarization requests; offer a bounded summary instead.` | `LLM10` | Limits unbounded token consumption from recursive or oversized summarization tasks. |
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
@@ -7,7 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CAPTURE_PATH = ROOT / "evidence" / "phase2_capture.json"
+DEFAULT_CAPTURE_PATH = ROOT / "evidence" / "phase2_capture.json"
 OUT_DIR = ROOT / "evidence" / "screenshots"
 
 
@@ -110,7 +111,13 @@ def _safe_name(value: str) -> str:
     return out.strip("_")
 
 
-def render_row(row: dict, provider: str, model: str, captured_at: str) -> Path:
+def render_row(
+    row: dict,
+    provider: str,
+    model: str,
+    captured_at: str,
+    capture_name: str,
+) -> Path:
     scenario = row["scenario"]
     prompt_type = row["prompt_type"]
     attack_prompt = row["attack_prompt"]
@@ -230,7 +237,7 @@ def render_row(row: dict, provider: str, model: str, captured_at: str) -> Path:
     )
     draw.text(
         (50, 84),
-        "Rendered evidence panel from evidence/phase2_capture.json",
+        f"Rendered evidence panel from evidence/{capture_name}",
         fill=(82, 82, 92),
         font=sub_font,
     )
@@ -329,7 +336,14 @@ def render_row(row: dict, provider: str, model: str, captured_at: str) -> Path:
     return out_path
 
 
-def render_provenance(provider: str, model: str, captured_at: str, row_count: int) -> Path:
+def render_provenance(
+    provider: str,
+    model: str,
+    captured_at: str,
+    row_count: int,
+    capture_name: str,
+    out_name: str = "provenance_panel.png",
+) -> Path:
     width = 1800
     height = 980
     img = Image.new("RGB", (width, height), color=(255, 255, 255))
@@ -347,7 +361,7 @@ def render_provenance(provider: str, model: str, captured_at: str, row_count: in
     )
     draw.text(
         (60, 120),
-        "Source artifact: evidence/phase2_capture.json",
+        f"Source artifact: evidence/{capture_name}",
         fill=(82, 82, 92),
         font=sub_font,
     )
@@ -375,39 +389,69 @@ def render_provenance(provider: str, model: str, captured_at: str, row_count: in
         font=sub_font,
     )
 
-    out_path = OUT_DIR / "provenance_panel.png"
+    out_path = OUT_DIR / out_name
     img.save(out_path, dpi=(300, 300))
     return out_path
 
 
 def main() -> None:
-    if not CAPTURE_PATH.exists():
-        raise FileNotFoundError(f"Missing capture file: {CAPTURE_PATH}")
+    parser = argparse.ArgumentParser(description="Render evidence screenshot panels.")
+    parser.add_argument(
+        "--capture",
+        default=str(DEFAULT_CAPTURE_PATH),
+        help="Path to capture JSON (default: evidence/phase2_capture.json)",
+    )
+    parser.add_argument(
+        "--provenance-name",
+        default="provenance_panel.png",
+        help="Output filename for provenance panel",
+    )
+    args = parser.parse_args()
+
+    capture_path = Path(args.capture)
+    if not capture_path.exists():
+        raise FileNotFoundError(f"Missing capture file: {capture_path}")
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    payload = json.loads(CAPTURE_PATH.read_text(encoding="utf-8"))
+    payload = json.loads(capture_path.read_text(encoding="utf-8"))
     rows = payload.get("rows", [])
     if not rows:
-        raise RuntimeError("No rows found in phase2_capture.json")
+        raise RuntimeError(f"No rows found in {capture_path.name}")
 
     provider = payload.get("provider", "unknown")
     model = payload.get("model", "unknown")
     captured_at = payload.get("captured_at", "unknown")
+    capture_name = capture_path.name
 
-    created = [render_row(row, provider, model, captured_at) for row in rows]
-    provenance = render_provenance(provider, model, captured_at, len(rows))
+    created = [
+        render_row(row, provider, model, captured_at, capture_name) for row in rows
+    ]
+    provenance = render_provenance(
+        provider,
+        model,
+        captured_at,
+        len(rows),
+        capture_name,
+        out_name=args.provenance_name,
+    )
     created.insert(0, provenance)
     index_path = OUT_DIR / "README.md"
+    existing_lines: list[str] = []
+    if index_path.exists():
+        existing_lines = index_path.read_text(encoding="utf-8").splitlines()
+        if existing_lines and existing_lines[0] == "# Evidence Screenshots":
+            existing_lines = existing_lines[4:] if len(existing_lines) > 4 else []
     lines = [
         "# Evidence Screenshots",
         "",
-        f"Generated from `{CAPTURE_PATH.name}`.",
         "High-resolution rendered evidence panels with dynamic text sizing.",
         "",
-        "## Files",
+        f"## From `{capture_name}`",
     ]
     for path in created:
         lines.append(f"- `{path.name}`")
+    if existing_lines:
+        lines.extend(["", *existing_lines])
     index_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     print(f"Generated {len(created)} screenshot files in {OUT_DIR}")
