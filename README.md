@@ -1,81 +1,47 @@
-# CSEN 296A-1 Security in AI Project — Spring 2026
+# NewWave OWASP Security Lab
 
-## NewWave Deal Assistant LLM Security Demo
+OWASP LLM Top 10 (2025) security lab for regulated finance. Unsafe vs hardened investment-banking assistant with live model evidence and OWASP control mapping.
 
-This project is a local Streamlit web demo for OWASP-style LLM security risks in an investment banking AI assistant. It compares the same attack prompt under two configurations:
+Local Streamlit demo. Same fictional attack prompt runs against two instruction sets side by side: an intentionally unsafe configuration and a safer banking-oriented configuration. Responses come from real model APIs, not hardcoded text.
 
-- An unsafe assistant configuration for classroom simulation
-- A safer assistant configuration with stronger controls
+**Coverage**: 4 of 10 OWASP LLM risks have archived live capture and screenshots. The rest are mapped as architectural gaps or partial control notes. See the [coverage matrix](docs/owasp_coverage.md) and [evidence index](docs/README.md). [Executive summary](docs/executive-summary.md) for resume-facing overview.
 
-The app can call a real OpenAI model through the official OpenAI Python SDK and the Responses API, a real Gemini model through Google's Gen AI Python SDK, or an OpenRouter model through OpenRouter's OpenAI-compatible Chat Completions endpoint. LLM outputs are not hardcoded.
+**In progress**: [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org) extension (ASI01 through ASI10). Not shipped in this repo yet.
 
-## Safety Scope
+## Demonstrated scenarios
 
-NewWave is a fictional Bay Area investment bank. All clients, deal names, buyer lists, financial figures, documents, and risks in this demo are fictional.
+| Scenario | OWASP LLM 2025 | Evidence |
+| --- | --- | --- |
+| Prompt Injection | LLM01 | [capture](evidence/phase2_capture.json), [screenshots](evidence/screenshots/README.md) |
+| Sensitive Information Disclosure | LLM02 | [capture](evidence/phase2_capture.json), [screenshots](evidence/screenshots/README.md) |
+| System Prompt Leakage | LLM07 | [capture](evidence/phase2_capture.json), [screenshots](evidence/screenshots/README.md) |
+| Excessive Agency | LLM06 | [capture](evidence/phase2_capture.json), [screenshots](evidence/screenshots/README.md) |
 
-The app does not send emails, modify files, connect to external systems, call financial APIs, or perform real financial actions. Any email or tool behavior is simulated text only.
+Control mapping: [safe controls to OWASP](evidence/safe_controls_to_owasp.md), [input separation](evidence/input_separation_control.md).
 
-## Scenarios
+## Safety scope
 
-1. **Prompt Injection**  
-   A malicious due diligence document contains hidden instructions that try to override the assistant's rules.
+NewWave is a fictional Bay Area investment bank. All clients, deal names, buyer lists, financial figures, documents, and risks are fictional.
 
-2. **Sensitive Information Disclosure**  
-   A user tries to make the assistant reveal cross-client confidential data.
-
-3. **System Prompt Leakage**  
-   A user tries to extract hidden system instructions and internal compliance rules.
-
-4. **Excessive Agency**  
-   A user tries to make the assistant perform an external client action without human approval.
+The app does not send emails, modify files, connect to external systems, call financial APIs, or perform real financial actions. Email and tool behavior is simulated text only.
 
 ## Install
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Configure API Keys
+## Configure API keys
 
-For OpenAI, set `OPENAI_API_KEY` in your shell:
-
-```bash
-export OPENAI_API_KEY="your_api_key_here"
-```
-
-For Gemini, set `GEMINI_API_KEY`:
-
-```bash
-export GEMINI_API_KEY="your_gemini_api_key_here"
-```
-
-`GOOGLE_API_KEY` is also supported for Gemini.
-
-For OpenRouter, set `OPENROUTER_API_KEY`:
-
-```bash
-export OPENROUTER_API_KEY="your_openrouter_api_key_here"
-```
-
-Or create a local `.env` file:
+Copy the example env file and add your keys:
 
 ```bash
 cp .env.example .env
 ```
 
-Then edit `.env` and replace the placeholder value.
-
-Streamlit secrets are also supported. You can set:
-
-```toml
-OPENAI_API_KEY = "your_api_key_here"
-GEMINI_API_KEY = "your_gemini_api_key_here"
-OPENROUTER_API_KEY = "your_openrouter_api_key_here"
-```
-
-in `.streamlit/secrets.toml`.
+Supported providers: OpenAI (`OPENAI_API_KEY`), Gemini (`GEMINI_API_KEY` or `GOOGLE_API_KEY`), OpenRouter (`OPENROUTER_API_KEY`). Streamlit secrets in `.streamlit/secrets.toml` are also supported.
 
 ## Run
 
@@ -83,32 +49,40 @@ in `.streamlit/secrets.toml`.
 streamlit run app.py
 ```
 
-By default, the app uses Gemini with:
+Default provider is Gemini. Change provider and model name in the sidebar. Override defaults with `DEFAULT_PROVIDER`, `DEFAULT_GEMINI_MODEL`, `DEFAULT_OPENAI_MODEL`, or `DEFAULT_OPENROUTER_MODEL` in `.env`.
+
+## What the demo shows
+
+- **Unsafe configuration**: intentionally vulnerable classroom simulation.
+- **Safe configuration**: untrusted input handling, disclosure blocks, draft-only external actions, human review for high-risk outputs.
+- Both configurations stream in parallel for direct comparison.
+
+Exact wording varies by provider, model, and run.
+
+## Repository layout
 
 ```text
-gemini-3.5-flash
+app.py                 Streamlit demo (unsafe vs safe)
+docs/                  Coverage matrix, executive summary, doc index
+evidence/              Phase 2 capture, tables, screenshots, control extracts
+tools/                 Screenshot regeneration script
 ```
 
-You can change the provider and model name in the Streamlit sidebar. OpenAI defaults to:
+## References
 
-```text
-gpt-5.5
-```
+This project maps to:
 
-OpenRouter defaults to DeepSeek:
+- **OWASP Top 10 for LLM Applications 2025** (published 2024-11-18), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- **OWASP Top 10 for Agentic Applications 2026** (published 2025-12), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
-```text
-deepseek/deepseek-v4-flash
-```
+Official project pages: [genai.owasp.org](https://genai.owasp.org)
 
-You can also set `DEFAULT_PROVIDER`, `DEFAULT_MODEL`, `DEFAULT_OPENAI_MODEL`, `DEFAULT_GEMINI_MODEL`, or `DEFAULT_OPENROUTER_MODEL` in your environment or `.env` file.
+## License
 
-## What the Demo Shows
+Application code and documentation in this repository: MIT License. Copyright Landen Stecker. See [LICENSE](LICENSE).
 
-The demo sends the same fictional context and user attack prompt to two different instruction sets:
+OWASP standards are cited as references under CC BY-SA 4.0 and are not relicensed under MIT.
 
-- The unsafe configuration is intentionally vulnerable and demonstrates what can go wrong.
-- The safe configuration treats retrieved documents and user prompts as untrusted, blocks unsafe disclosures or actions, and requires human review for high-risk banking outputs.
-- The unsafe and safe responses stream side by side so students can watch both configurations run in parallel.
+---
 
-Because responses come from a real selected model provider, exact wording may vary between runs.
+_Originally developed for CSEN 296A-1 Security in AI, Spring 2026._
