@@ -15,8 +15,10 @@ Primary capture and analysis files live under `../evidence/`.
 
 | Path | Contents |
 | --- | --- |
-| [../evidence/phase2_capture.json](../evidence/phase2_capture.json) | Verbatim 8-run capture (4 scenarios, default + custom prompts) |
-| [../evidence/phase2_evidence_table.md](../evidence/phase2_evidence_table.md) | Report-ready table derived from capture |
+| [../evidence/phase2_capture.json](../evidence/phase2_capture.json) | Verbatim 8-run capture (LLM01, LLM02, LLM06, LLM07) |
+| [../evidence/phase2_evidence_table.md](../evidence/phase2_evidence_table.md) | Report-ready table for Phase 2 |
+| [../evidence/phase3_capture.json](../evidence/phase3_capture.json) | Verbatim 6-run capture (LLM05, LLM09, LLM10) |
+| [../evidence/phase3_evidence_table.md](../evidence/phase3_evidence_table.md) | Report-ready table for Phase 3 |
 | [../evidence/safe_controls_to_owasp.md](../evidence/safe_controls_to_owasp.md) | Safe instruction lines mapped to OWASP LLM risks |
 | [../evidence/input_separation_control.md](../evidence/input_separation_control.md) | `build_llm_input()` trusted vs untrusted separation |
 | [../evidence/audit_closed_checklist.md](../evidence/audit_closed_checklist.md) | Phase 2 scope and completion checklist |
@@ -32,7 +34,11 @@ Generated from `phase2_capture.json`. One default and one custom panel per demon
 - `evidence/screenshots/sensitive_information_disclosure_*.png` (LLM02)
 - `evidence/screenshots/system_prompt_leakage_*.png` (LLM07)
 - `evidence/screenshots/excessive_agency_*.png` (LLM06)
-- `evidence/screenshots/provenance_panel.png` (capture metadata, not a scenario panel)
+- `evidence/screenshots/improper_output_handling_*.png` (LLM05)
+- `evidence/screenshots/misinformation_*.png` (LLM09)
+- `evidence/screenshots/unbounded_consumption_*.png` (LLM10)
+- `evidence/screenshots/provenance_panel.png` (Phase 2 metadata)
+- `evidence/screenshots/provenance_panel_phase3.png` (Phase 3 metadata)
 - `evidence/screenshots/Anchor.png` (layout reference)
 
 ## Report drafts (course artifacts)

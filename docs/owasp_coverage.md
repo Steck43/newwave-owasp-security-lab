@@ -2,7 +2,7 @@
 
 NewWave OWASP Security Lab. Mapped to OWASP LLM Top 10 (2025), MITRE ATLAS where noted below, and NIST AI RMF (see executive summary). Status values follow the course report Section 5.1 demo-status language.
 
-**Demonstrated count today**: **4 of 10** (Phase 2 capture on disk). Phase 3 scenarios exist in `app.py` but capture is blocked pending a valid API key. See `evidence/phase3_capture_status.md`.
+**Demonstrated count**: **7 of 10** OWASP LLM Top 10 (2025) risks.
 
 ## Status definitions (Section 5.1)
 
@@ -11,7 +11,6 @@ NewWave OWASP Security Lab. Mapped to OWASP LLM Top 10 (2025), MITRE ATLAS where
 | Demonstrated | Live model capture and matching screenshots under `evidence/` |
 | Assessed-not-demonstrated (architectural note) | Threat and control notes only, no live exploit |
 | Assessed-not-demonstrated (planned) | Listed in scope, no scenario or capture yet |
-| Assessed-not-demonstrated (capture pending) | Scenario in app, capture script ready, no capture file yet |
 
 ## LLM Top 10 (2025)
 
@@ -21,12 +20,12 @@ NewWave OWASP Security Lab. Mapped to OWASP LLM Top 10 (2025), MITRE ATLAS where
 | LLM02 | Sensitive Information Disclosure | Sensitive Information Disclosure | Demonstrated | AML.T0057 LLM Data Leakage | `evidence/phase2_capture.json`, `evidence/phase2_evidence_table.md`, `evidence/screenshots/sensitive_information_disclosure_*.png` |
 | LLM03 | Supply Chain | Not implemented | Assessed-not-demonstrated (architectural note) | | `evidence/llm03_supply_chain_assessment.md` |
 | LLM04 | Data and Model Poisoning | Not implemented | Assessed-not-demonstrated (planned) | | none (gap) |
-| LLM05 | Improper Output Handling | Improper Output Handling | Assessed-not-demonstrated (capture pending) | | `evidence/phase3_capture_status.md` |
+| LLM05 | Improper Output Handling | Improper Output Handling | Demonstrated | | `evidence/phase3_capture.json`, `evidence/phase3_evidence_table.md`, `evidence/screenshots/improper_output_handling_*.png` |
 | LLM06 | Excessive Agency | Excessive Agency | Demonstrated | | `evidence/phase2_capture.json`, `evidence/phase2_evidence_table.md`, `evidence/screenshots/excessive_agency_*.png` |
 | LLM07 | System Prompt Leakage | System Prompt Leakage | Demonstrated | AML.T0056 Extract LLM System Prompt | `evidence/phase2_capture.json`, `evidence/phase2_evidence_table.md`, `evidence/screenshots/system_prompt_leakage_*.png` |
 | LLM08 | Vector and Embedding Weaknesses | Not implemented | Assessed-not-demonstrated (planned) | | none (gap) |
-| LLM09 | Misinformation | Misinformation | Assessed-not-demonstrated (capture pending) | AML.T0048 External Harms | `evidence/safe_controls_to_owasp.md`, `evidence/phase3_capture_status.md` |
-| LLM10 | Unbounded Consumption | Unbounded Consumption | Assessed-not-demonstrated (capture pending) | | `evidence/phase3_capture_status.md` |
+| LLM09 | Misinformation | Misinformation | Demonstrated | AML.T0048 External Harms | `evidence/phase3_capture.json`, `evidence/phase3_evidence_table.md`, `evidence/screenshots/misinformation_*.png` |
+| LLM10 | Unbounded Consumption | Unbounded Consumption | Demonstrated | | `evidence/phase3_capture.json`, `evidence/phase3_evidence_table.md`, `evidence/screenshots/unbounded_consumption_*.png` |
 
 ## Cross-cutting control mapping
 
@@ -45,7 +44,3 @@ NewWave OWASP Security Lab. Mapped to OWASP LLM Top 10 (2025), MITRE ATLAS where
 
 - OWASP Top 10 for LLM Applications 2025, published 2024-11-18, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 - OWASP Top 10 for Agentic Applications 2026, published 2025-12, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-
-## Target state after Phase 3 capture
-
-When `evidence/phase3_capture.json` and screenshots exist, LLM05, LLM09, and LLM10 move to **Demonstrated** for a total of **7 of 10**. LLM03 remains Assessed-not-demonstrated (architectural note). LLM04 and LLM08 remain Assessed-not-demonstrated (planned).

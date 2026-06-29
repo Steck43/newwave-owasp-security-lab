@@ -13,33 +13,31 @@ Each run sends identical fictional context and user prompt to two instruction se
 
 Responses come from live model APIs (OpenAI, Gemini, or OpenRouter). Wording varies by provider, model, and run.
 
-## What was empirically tested (Phase 2)
+## What was empirically tested
 
-Phase 2 captured **8 live runs** (4 scenarios, default and custom bypass prompt each) with provider Gemini and model `gemini-2.5-flash`. Verbatim outputs are in `evidence/phase2_capture.json`. Report tables and screenshots match those rows.
+**Phase 2** (8 runs): LLM01, LLM02, LLM06, LLM07. Capture: `evidence/phase2_capture.json`. Model: `gemini-2.5-flash`.
+
+**Phase 3** (6 runs): LLM05, LLM09, LLM10. Capture: `evidence/phase3_capture.json`. Model: `gemini-2.5-flash`. Captured 2026-06-28.
 
 | Scenario | OWASP LLM 2025 | MITRE ATLAS |
 | --- | --- | --- |
 | Prompt Injection | LLM01 | AML.T0051; indirect AML.T0051.001 |
 | Sensitive Information Disclosure | LLM02 | AML.T0057 LLM Data Leakage |
+| Improper Output Handling | LLM05 | |
 | Excessive Agency | LLM06 | |
 | System Prompt Leakage | LLM07 | AML.T0056 Extract LLM System Prompt |
+| Misinformation | LLM09 | AML.T0048 External Harms |
+| Unbounded Consumption | LLM10 | |
 
-Observed pattern in archived runs: the unsafe configuration followed injected framing, disclosed cross-client data, leaked internal-style policy text, and showed phrasing-sensitive agency behavior. The safe configuration refused or contained those classes.
-
-## Phase 3 status (blocked)
-
-Three scenarios were added for LLM05 Improper Output Handling, LLM09 Misinformation, and LLM10 Unbounded Consumption. Capture script: `tools/capture_phase3_evidence.py`. **Capture did not complete** on 2026-06-28 because `GEMINI_API_KEY` returned `API_KEY_INVALID`. No `phase3_capture.json` exists. See `evidence/phase3_capture_status.md`.
+Observed pattern across captures: unsafe paths emitted raw SQL/JSON, invented valuation multiples, and long recursive outputs (up to 24361 chars on one LLM10 row). Safe paths refused or bounded those classes.
 
 ## Honest coverage (Section 5.1 status language)
 
 | Status | Count | Risks |
 | --- | --- | --- |
-| Demonstrated | 4 of 10 | LLM01, LLM02, LLM06, LLM07 |
+| Demonstrated | 7 of 10 | LLM01, LLM02, LLM05, LLM06, LLM07, LLM09, LLM10 |
 | Assessed-not-demonstrated (architectural note) | 1 | LLM03 ([note](evidence/llm03_supply_chain_assessment.md)) |
-| Assessed-not-demonstrated (capture pending) | 3 | LLM05, LLM09, LLM10 (scenarios in app) |
 | Assessed-not-demonstrated (planned) | 2 | LLM04, LLM08 |
-
-**Target after valid Phase 3 capture**: 7 Demonstrated (add LLM05, LLM09, LLM10).
 
 **OWASP Top 10 for Agentic Applications 2026**: in progress, not shipped.
 
@@ -49,7 +47,7 @@ Three scenarios were added for LLM05 Improper Output Handling, LLM09 Misinformat
 | --- | --- |
 | Govern | Human review required for high-impact finance outputs in safe configuration |
 | Map | Fictional assets, trust boundaries, OWASP coverage matrix |
-| Measure | Phase 2 adversarial capture set (8 runs); Phase 3 pending |
+| Measure | Phase 2 and Phase 3 adversarial capture sets (14 runs total) |
 | Manage | Safe vs unsafe control comparison drives mitigation priorities |
 
 ## Control mapping approach
