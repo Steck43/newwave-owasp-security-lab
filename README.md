@@ -14,11 +14,11 @@ Local Streamlit demo. Same fictional attack prompt runs against two instruction 
 | --- | --- | --- | --- |
 | Prompt Injection | LLM01 | Phase 2 | AML.T0051; indirect AML.T0051.001 |
 | Sensitive Information Disclosure | LLM02 | Phase 2 | AML.T0057 LLM Data Leakage |
-| Improper Output Handling | LLM05 | Phase 3 | |
-| Excessive Agency | LLM06 | Phase 2 | |
+| Improper Output Handling | LLM05 | Phase 3 | no clean 1-to-1 |
+| Excessive Agency | LLM06 | Phase 2 | no clean 1-to-1 |
 | System Prompt Leakage | LLM07 | Phase 2 | AML.T0056 Extract LLM System Prompt |
-| Misinformation | LLM09 | Phase 3 | AML.T0048 External Harms |
-| Unbounded Consumption | LLM10 | Phase 3 | |
+| Misinformation | LLM09 | Phase 3 | |
+| Unbounded Consumption | LLM10 | Phase 3 | no clean 1-to-1 |
 
 Evidence: [phase2 capture](evidence/phase2_capture.json), [phase3 capture](evidence/phase3_capture.json), [screenshots](evidence/screenshots/README.md).
 
@@ -92,9 +92,13 @@ This project maps to:
 
 Official project pages: [genai.owasp.org](https://genai.owasp.org)
 
+## Contributors
+
+See [CONTRIBUTORS.md](CONTRIBUTORS.md). The base NewWave Streamlit demo (`cda59f1`) is by Wenhan Kong. The security assessment, added scenarios, evidence, and portfolio documentation are by Landen Stecker.
+
 ## License
 
-Application code and documentation in this repository: MIT License. Copyright Landen Stecker. See [LICENSE](LICENSE).
+MIT License. Copyright (c) 2026 Landen Stecker covers the security assessment, documentation, evidence, scenarios and code added after the base commit, and related tooling. The base demo application is authored by Wenhan Kong. See [LICENSE](LICENSE).
 
 OWASP standards are cited as references under CC BY-SA 4.0 and are not relicensed under MIT.
 
