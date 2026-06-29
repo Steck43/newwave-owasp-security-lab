@@ -4,7 +4,7 @@ OWASP LLM Top 10 (2025) security lab for regulated finance, mapped to OWASP LLM 
 
 Local Streamlit demo. Same fictional attack prompt runs against two instruction sets side by side: an intentionally unsafe configuration and a safer banking-oriented configuration. Responses come from real model APIs, not hardcoded text.
 
-**Coverage**: **7 of 10** OWASP LLM risks are **Demonstrated** with archived capture and screenshots. LLM03 has an architectural assessment note. LLM04 and LLM08 are Assessed-not-demonstrated (planned). See the [coverage matrix](docs/owasp_coverage.md) and [evidence index](docs/README.md). [Executive summary](docs/executive-summary.md) for resume-facing overview. [Scope and limitations](docs/scope-and-limitations.md) for claim boundaries.
+**Coverage**: **7 of 10** OWASP LLM risks are **Demonstrated** with archived capture and screenshots. LLM03 has an architectural assessment note. LLM04 and LLM08 are Assessed-not-demonstrated (planned). See the [coverage matrix](docs/owasp_coverage.md) and [evidence index](docs/README.md). [Executive summary](docs/executive-summary.md) includes scope and limitations inline.
 
 **In progress**: [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org) (ASI01 through ASI10). Not shipped in this repo yet.
 

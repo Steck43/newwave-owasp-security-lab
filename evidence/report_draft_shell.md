@@ -61,6 +61,20 @@ Row references to use:
 - LLM06: `Excessive Agency [default]`, `Excessive Agency [custom]`
 - LLM07: `System Prompt Leakage [default]`, `System Prompt Leakage [custom]`
 
+### 5.3 Scope and Limitations
+
+This assessment is an applied control demonstration, not a research result. Claims are bounded by how the lab was run.
+
+**Single configuration.** All captures use one app, one model (`gemini-2.5-flash`), and one provider. Findings illustrate risk classes; they do not generalize without re-running on other models or providers.
+
+**Non-determinism is shown, not characterized.** Output varies run to run. LLM09 produced two different fabricated multiples in archived rows, recorded as behavior evidence, not measured across a distribution.
+
+**Author-constructed configurations.** The safe vs unsafe comparison shows specific instruction differences. It does not validate the safe configuration against an adaptive attacker. It is a demonstrated control pattern, not a hardened product.
+
+**Severity.** Severity is reasoned, not scored against a calibrated standard.
+
+**What holds.** On a real model, with verbatim evidence, prompt-level controls reduce these risks but stay probabilistic. Deterministic enforcement outside the model remains the final boundary for regulated workflows.
+
 ---
 
 ## Section 6: Vulnerability Evaluation

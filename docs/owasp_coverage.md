@@ -4,7 +4,7 @@ NewWave OWASP Security Lab. Mapped to OWASP LLM Top 10 (2025), MITRE ATLAS where
 
 **Demonstrated count**: **7 of 10** OWASP LLM Top 10 (2025) risks.
 
-Claim boundaries: [scope-and-limitations.md](scope-and-limitations.md).
+Claim boundaries are inline in [executive-summary.md](executive-summary.md). Canonical copy: [scope-and-limitations.md](scope-and-limitations.md).
 
 ## Status definitions (Section 5.1)
 
