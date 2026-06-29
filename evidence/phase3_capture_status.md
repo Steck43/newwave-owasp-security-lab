@@ -1,6 +1,6 @@
 # Phase 3 Capture Status
 
-Completed 2026-06-28.
+Completed 2026-06-28. LLM05 recaptured with lab-only downstream leg (2026-06-28 17:29:22).
 
 | Item | Path |
 | --- | --- |

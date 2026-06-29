@@ -78,17 +78,9 @@ def refresh_llm05_table_rows(rows: list[dict]) -> None:
         return
 
     text = TABLE_PATH.read_text(encoding="utf-8")
-    marker = "## Custom Bypass Prompts (3 scenarios)"
-    if marker not in text:
-        return
-
-    default_rows = [row for row in rows if row["prompt_type"] == "default"]
-    custom_rows = [row for row in rows if row["prompt_type"] == "custom"]
-    if len(default_rows) != 1 or len(custom_rows) != 1:
-        return
 
     def format_cell(value: str) -> str:
-        return value.replace("\n", "<br>")
+        return value.replace("|", "\\|").replace("\n", "<br>")
 
     def format_row(row: dict) -> str:
         return (
@@ -97,44 +89,20 @@ def refresh_llm05_table_rows(rows: list[dict]) -> None:
             f"{row['control_that_held']} | {row['why_it_held']} |"
         )
 
-    head, tail = text.split(marker, 1)
-    tail_lines = tail.splitlines()
-    section_end = 0
-    for index, line in enumerate(tail_lines):
-        if line.startswith("## ") and index > 0:
-            section_end = index
-            break
-    else:
-        section_end = len(tail_lines)
+    by_type = {row["prompt_type"]: row for row in rows}
+    if "default" not in by_type or "custom" not in by_type:
+        return
 
-    custom_section_lines = tail_lines[:section_end]
-    rest = tail_lines[section_end:]
-
-    updated_custom: list[str] = []
-    replaced = 0
-    for line in custom_section_lines:
+    lines = text.splitlines()
+    updated: list[str] = []
+    for line in lines:
         if line.startswith("| Improper Output Handling |"):
-            if replaced == 0:
-                updated_custom.append(format_row(custom_rows[0]))
-            replaced += 1
+            prompt_type = "custom" if "pitchbook automation" in line else "default"
+            updated.append(format_row(by_type[prompt_type]))
             continue
-        updated_custom.append(line)
+        updated.append(line)
 
-    default_section_lines = head.splitlines()
-    updated_default: list[str] = []
-    replaced = 0
-    for line in default_section_lines:
-        if line.startswith("| Improper Output Handling |"):
-            if replaced == 0:
-                updated_default.append(format_row(default_rows[0]))
-            replaced += 1
-            continue
-        updated_default.append(line)
-
-    TABLE_PATH.write_text(
-        "\n".join(updated_default + [marker] + updated_custom + rest) + "\n",
-        encoding="utf-8",
-    )
+    TABLE_PATH.write_text("\n".join(updated) + "\n", encoding="utf-8")
 
 
 def main() -> None:
