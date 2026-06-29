@@ -8,6 +8,7 @@ Portfolio-facing docs for the NewWave OWASP Security Lab.
 | --- | --- |
 | [executive-summary.md](executive-summary.md) | One-page overview for resume and LinkedIn |
 | [owasp_coverage.md](owasp_coverage.md) | OWASP LLM 2025 coverage matrix with honest tiers |
+| [scope-and-limitations.md](scope-and-limitations.md) | Claim boundaries for reviewers |
 
 ## Evidence artifacts
 

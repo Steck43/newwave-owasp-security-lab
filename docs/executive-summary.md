@@ -54,8 +54,11 @@ Observed pattern across captures: unsafe paths emitted raw SQL/JSON, invented va
 
 Safe controls are extracted from `SAFE_ASSISTANT_INSTRUCTIONS` in `app.py` and mapped to OWASP risks in `evidence/safe_controls_to_owasp.md`. Input separation via tagged context and prompt regions is in `evidence/input_separation_control.md`. Prompt-level controls are probabilistic under adversarial phrasing. Deterministic gates outside the model remain the final enforcement boundary for regulated workflows.
 
+See [scope and limitations](scope-and-limitations.md) for what this lab does and does not establish.
+
 ## References
 
 - [Coverage matrix](owasp_coverage.md)
 - [Evidence index](README.md)
+- [Scope and limitations](scope-and-limitations.md)
 - OWASP LLM Top 10 2025 and Agentic Top 10 2026 (CC BY-SA 4.0). See repository README for citation links.
