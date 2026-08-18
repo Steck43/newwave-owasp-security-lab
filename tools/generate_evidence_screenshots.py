@@ -94,7 +94,9 @@ def _draw_block(
     h = header_h + body_h
 
     draw.rectangle((x, y, x + w, y + h), fill=body_bg, outline=border_fill, width=3)
-    draw.rectangle((x, y, x + w, y + header_h), fill=title_bg, outline=border_fill, width=3)
+    draw.rectangle(
+        (x, y, x + w, y + header_h), fill=title_bg, outline=border_fill, width=3
+    )
     draw.text((x + pad_x, y + 12), title, fill=title_fill, font=title_font)
 
     ty = y + header_h + pad_y
@@ -366,7 +368,9 @@ def render_provenance(
         font=sub_font,
     )
 
-    draw.rectangle((60, 190, 1740, 760), outline=(110, 138, 198), width=4, fill=(245, 249, 255))
+    draw.rectangle(
+        (60, 190, 1740, 760), outline=(110, 138, 198), width=4, fill=(245, 249, 255)
+    )
     lines = [
         f"captured_at: {captured_at}",
         f"provider: {provider}",
@@ -459,4 +463,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

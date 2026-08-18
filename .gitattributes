@@ -1,0 +1,5 @@
+.floor/** text eol=lf
+.githooks/** text eol=lf
+.github/** text eol=lf
+.pre-commit-config.yaml text eol=lf
+CHANGELOG.md text eol=lf

@@ -28,3 +28,6 @@ dist/
 Thumbs.db
 .idea/
 .vscode/
+
+# Accidental vault checkout — never publish
+The_Boswell_Archive/
