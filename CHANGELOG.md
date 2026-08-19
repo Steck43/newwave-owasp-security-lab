@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Repo floor: required CI (secrets, authorship, tests, ruff, craft voice/changelog/comments), local pre-commit, Keep a Changelog. 
+- Repo floor: required CI (secrets, authorship, tests, ruff, craft voice/changelog/comments), local pre-commit, Keep a Changelog.
+- Floor template v2: push CI on every branch, `resolve_base.sh` (empty range exits 3), workflow lint (zizmor + actionlint), Dependabot, SECURITY.md. 
 
 ### Changed
 
