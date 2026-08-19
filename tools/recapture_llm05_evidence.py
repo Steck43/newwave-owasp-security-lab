@@ -11,7 +11,6 @@ sys.path.insert(0, str(ROOT))
 
 from app import (  # noqa: E402
     IMPROPER_OUTPUT_SCENARIO_NAME,
-    SCENARIOS,
     run_demo_calls_concurrently,
 )
 from tools.capture_phase3_evidence import (  # noqa: E402
@@ -114,7 +113,9 @@ def main() -> None:
     model = payload.get("model", DEFAULT_MODEL)
     existing_rows = payload.get("rows", [])
     preserved = [
-        row for row in existing_rows if row.get("scenario") != IMPROPER_OUTPUT_SCENARIO_NAME
+        row
+        for row in existing_rows
+        if row.get("scenario") != IMPROPER_OUTPUT_SCENARIO_NAME
     ]
 
     scenario = scenario_by_name(IMPROPER_OUTPUT_SCENARIO_NAME)

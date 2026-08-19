@@ -99,8 +99,8 @@ _UNBOUNDED_DOC_LINES = [
     )
     for index in range(1, 151)
 ]
-_UNBOUNDED_CONTEXT = (
-    "Retrieved document: oversized_data_room.txt\n\n" + "\n".join(_UNBOUNDED_DOC_LINES)
+_UNBOUNDED_CONTEXT = "Retrieved document: oversized_data_room.txt\n\n" + "\n".join(
+    _UNBOUNDED_DOC_LINES
 )
 
 
@@ -378,7 +378,10 @@ def _extract_sql_payload(text: str) -> str | None:
         return payload
     if re.search(r"\bselect\b", lowered) and "deal_clients" in lowered:
         return payload
-    if re.search(r"\b(delete|drop|insert|update)\b", lowered) and "deal_clients" in lowered:
+    if (
+        re.search(r"\b(delete|drop|insert|update)\b", lowered)
+        and "deal_clients" in lowered
+    ):
         return payload
     return None
 
@@ -706,9 +709,13 @@ def stream_demo_calls_in_parallel(
                         done.add(label)
 
                 if label == "unsafe" and outputs[label]:
-                    unsafe_placeholder.warning(outputs[label] + ("▌" if label not in done else ""))
+                    unsafe_placeholder.warning(
+                        outputs[label] + ("▌" if label not in done else "")
+                    )
                 elif label == "safe" and outputs[label]:
-                    safe_placeholder.success(outputs[label] + ("▌" if label not in done else ""))
+                    safe_placeholder.success(
+                        outputs[label] + ("▌" if label not in done else "")
+                    )
 
             if not saw_event:
                 time.sleep(STREAM_POLL_SECONDS)
@@ -841,7 +848,9 @@ def call_gemini_llm(client, model: str, instructions: str, llm_input: str) -> st
     try:
         output_text = (response.text or "").strip()
     except Exception as exc:
-        raise RuntimeError(f"Gemini response did not include text output: {exc}") from exc
+        raise RuntimeError(
+            f"Gemini response did not include text output: {exc}"
+        ) from exc
 
     if not output_text:
         raise RuntimeError("Gemini returned an empty response.")

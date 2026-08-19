@@ -1,5 +1,7 @@
 # NewWave OWASP Security Lab
 
+This lab is the **OWASP LLM Top 10 2025** edition. Directory IDs and Demonstrated captures stay on 2025 slugs. Do not rebase those captures onto the 2026 list (LLM08:2025 Vector is not LLM08:2026 Hidden Context Exposure).
+
 OWASP LLM Top 10 (2025) security lab for regulated finance, mapped to OWASP LLM Top 10, MITRE ATLAS, and NIST AI RMF. Unsafe vs hardened investment-banking assistant with live model evidence and OWASP control mapping.
 
 Local Streamlit demo. Same fictional attack prompt runs against two instruction sets side by side: an intentionally unsafe configuration and a safer banking-oriented configuration. Responses come from real model APIs, not hardcoded text.
