@@ -18,4 +18,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- First push of a new branch resolves craft BASE to the origin default, so required craft jobs do not fail on an all-zero `github.event.before`.
 - Floor CI: pin ruff to `>=0.15.15,<0.16` so GitHub cannot pull 0.16 default-rule expansion, and put repo-root `app.py` on `PYTHONPATH` for pytest.
