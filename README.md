@@ -1,16 +1,14 @@
 # NewWave OWASP Security Lab
 
-This lab is the **OWASP LLM Top 10 2025** edition. Directory IDs and Demonstrated captures stay on 2025 slugs. Do not rebase those captures onto the 2026 list (LLM08:2025 Vector is not LLM08:2026 Hidden Context Exposure).
+A banking assistant that sees a deal memo can be talked into leaking it, drafting a transfer, or treating a forged price as fact. This lab runs the same fictional attack prompt against two instruction sets, an intentionally unsafe configuration and a safer banking-oriented one, and records what a live model actually returns. The responses come from real model APIs, not hardcoded text.
 
-OWASP LLM Top 10 (2025) security lab for regulated finance, mapped to OWASP LLM Top 10, MITRE ATLAS, and NIST AI RMF. Unsafe vs hardened investment-banking assistant with live model evidence and OWASP control mapping.
+The directory is the OWASP LLM Top 10 2025 edition. Captures stay on 2025 slugs because LLM08:2025 Vector is not LLM08:2026 Hidden Context Exposure, and a capture taken against one list is not evidence against the other.
 
-Local Streamlit demo. Same fictional attack prompt runs against two instruction sets side by side: an intentionally unsafe configuration and a safer banking-oriented configuration. Responses come from real model APIs, not hardcoded text.
+Seven of ten OWASP LLM risks have archived in-lab capture and screenshots. That is not the dual-lab sense of Demonstrated, which requires external primary evidence. LLM03 has an architectural assessment note; LLM04 and LLM08 are assessed, not captured. Coverage, evidence, and scope live in the [coverage matrix](docs/owasp_coverage.md), the [evidence index](docs/README.md), and the [executive summary](docs/executive-summary.md).
 
-**Coverage**: **7 of 10** OWASP LLM risks are **Demonstrated** with archived capture and screenshots. LLM03 has an architectural assessment note. LLM04 and LLM08 are Assessed-not-demonstrated (planned). See the [coverage matrix](docs/owasp_coverage.md) and [evidence index](docs/README.md). [Executive summary](docs/executive-summary.md) includes scope and limitations inline.
+The [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org) (ASI01 through ASI10) is in progress and is not shipped in this repo yet.
 
-**In progress**: [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org) (ASI01 through ASI10). Not shipped in this repo yet.
-
-## Demonstrated scenarios
+## Archived in-lab captures
 
 | Scenario | OWASP LLM 2025 | Capture | MITRE ATLAS |
 | --- | --- | --- | --- |
@@ -24,7 +22,7 @@ Local Streamlit demo. Same fictional attack prompt runs against two instruction 
 
 Evidence: [phase2 capture](evidence/phase2_capture.json), [phase3 capture](evidence/phase3_capture.json), [screenshots](evidence/screenshots/README.md).
 
-## Assessed-not-demonstrated
+## Assessed, not captured
 
 | LLM ID | Status | Notes |
 | --- | --- | --- |
@@ -36,9 +34,7 @@ Control mapping: [safe controls to OWASP](evidence/safe_controls_to_owasp.md), [
 
 ## Safety scope
 
-NewWave is a fictional Bay Area investment bank. All clients, deal names, buyer lists, financial figures, documents, and risks are fictional.
-
-The app does not send emails, modify files, connect to external systems, call financial APIs, or perform real financial actions. Email and tool behavior is simulated text only.
+NewWave is a fictional Bay Area investment bank; all clients, deal names, buyer lists, financial figures, documents, and risks are fictional. The app does not send emails, modify files, connect to external systems, call financial APIs, or perform real financial actions, and email and tool behavior is simulated text only.
 
 ## Install
 
@@ -56,7 +52,7 @@ Copy the example env file and add your keys:
 cp .env.example .env
 ```
 
-Supported providers: OpenAI (`OPENAI_API_KEY`), Gemini (`GEMINI_API_KEY` or `GOOGLE_API_KEY`), OpenRouter (`OPENROUTER_API_KEY`). Streamlit secrets in `.streamlit/secrets.toml` are also supported.
+Supported providers are OpenAI (`OPENAI_API_KEY`), Gemini (`GEMINI_API_KEY` or `GOOGLE_API_KEY`), and OpenRouter (`OPENROUTER_API_KEY`); Streamlit secrets in `.streamlit/secrets.toml` are also accepted.
 
 ## Run
 
@@ -64,15 +60,13 @@ Supported providers: OpenAI (`OPENAI_API_KEY`), Gemini (`GEMINI_API_KEY` or `GOO
 streamlit run app.py
 ```
 
-Default provider is Gemini. Change provider and model name in the sidebar. Override defaults with `DEFAULT_PROVIDER`, `DEFAULT_GEMINI_MODEL`, `DEFAULT_OPENAI_MODEL`, or `DEFAULT_OPENROUTER_MODEL` in `.env`.
+Default provider is Gemini; change provider and model name in the sidebar, or override `DEFAULT_PROVIDER`, `DEFAULT_GEMINI_MODEL`, `DEFAULT_OPENAI_MODEL`, or `DEFAULT_OPENROUTER_MODEL` in `.env`.
 
 ## What the demo shows
 
 - **Unsafe configuration**: intentionally vulnerable classroom simulation.
 - **Safe configuration**: untrusted input handling, disclosure blocks, draft-only external actions, human review for high-risk outputs.
-- Both configurations stream in parallel for direct comparison.
-
-Exact wording varies by provider, model, and run.
+- Both configurations stream in parallel for direct comparison, and exact wording varies by provider, model, and run.
 
 ## Repository layout
 
@@ -85,22 +79,15 @@ tools/                 Capture and screenshot scripts
 
 ## References
 
-This project maps to:
-
-- **OWASP Top 10 for LLM Applications 2025** (published 2024-11-18), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-- **OWASP Top 10 for Agentic Applications 2026** (published 2025-12), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-- **MITRE ATLAS** (technique IDs cited in coverage matrix where verified)
-- **NIST AI RMF 1.0** (Govern, Map, Measure, Manage; see executive summary)
-
-Official project pages: [genai.owasp.org](https://genai.owasp.org)
+This project maps to OWASP Top 10 for LLM Applications 2025, OWASP Top 10 for Agentic Applications 2026, MITRE ATLAS, and NIST AI RMF 1.0, under the terms those projects publish at [genai.owasp.org](https://genai.owasp.org).
 
 ## Contributors
 
-See [CONTRIBUTORS.md](CONTRIBUTORS.md). The base NewWave Streamlit demo (`cda59f1`) is by Wenhan Kong. The security assessment, added scenarios, evidence, and portfolio documentation are by Landen Stecker.
+See [CONTRIBUTORS.md](CONTRIBUTORS.md). The base NewWave Streamlit demo (`cda59f1`) is by Wenhan Kong; the security assessment, added scenarios, evidence, and portfolio documentation are by Landen Stecker.
 
 ## License
 
-MIT License. Copyright (c) 2026 Landen Stecker covers the security assessment, documentation, evidence, scenarios and code added after the base commit, and related tooling. The base demo application is authored by Wenhan Kong. See [LICENSE](LICENSE).
+MIT License. Copyright (c) 2026 Landen Stecker covers the security assessment, documentation, evidence, scenarios and code added after the base commit, and related tooling; the base demo application is authored by Wenhan Kong, and the terms are in [LICENSE](LICENSE).
 
 OWASP standards are cited as references under CC BY-SA 4.0 and are not relicensed under MIT.
 
