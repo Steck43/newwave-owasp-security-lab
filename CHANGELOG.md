@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- 
+- README leads with the attack a banking assistant can be talked into, states 2025-slug captures as fact rather than an order, and stops using Demonstrated for in-lab archives. That word stays reserved for external primary evidence on the dual-lab roof. 
 
 ### Fixed
 
