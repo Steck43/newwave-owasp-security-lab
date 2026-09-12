@@ -27,8 +27,8 @@ Evidence: [phase2 capture](evidence/phase2_capture.json), [phase3 capture](evide
 | LLM ID | Status | Notes |
 | --- | --- | --- |
 | LLM03 Supply Chain | Architectural note | [Assessment](evidence/llm03_supply_chain_assessment.md) |
-| LLM04 Data and Model Poisoning | Planned | |
-| LLM08 Vector and Embedding Weaknesses | Planned | |
+| LLM04 Data and Model Poisoning | Architectural note | [Assessment](evidence/llm04_data_poisoning_assessment.md) |
+| LLM08 Vector and Embedding Weaknesses | Architectural note | [Assessment](evidence/llm08_vector_embedding_assessment.md) |
 
 Control mapping: [safe controls to OWASP](evidence/safe_controls_to_owasp.md), [input separation](evidence/input_separation_control.md).
 
