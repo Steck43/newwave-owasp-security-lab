@@ -35,11 +35,9 @@ Observed pattern across captures: unsafe paths emitted raw SQL/JSON, invented va
 
 | Status | Count | Risks |
 | --- | --- | --- |
-| Demonstrated | 7 of 10 | LLM01, LLM02, LLM05, LLM06, LLM07, LLM09, LLM10 |
-| Assessed-not-demonstrated (architectural note) | 1 | LLM03 ([note](evidence/llm03_supply_chain_assessment.md)) |
-| Assessed-not-demonstrated (planned) | 2 | LLM04, LLM08 |
-
-**OWASP Top 10 for Agentic Applications 2026**: in progress, not shipped.
+| Reproduced-in-lab | seven live captures | LLM01, LLM02, LLM05, LLM06, LLM07, LLM09, LLM10 |
+| Assessed-not-demonstrated (architectural note) | three | LLM03, LLM04, LLM08 |
+| ASI01–ASI10 | cited next door | `owasp-dual-top10-lab` `labctl`; this roof does not clone that fixture engine |
 
 ## Scope and limitations
 

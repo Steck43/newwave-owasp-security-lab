@@ -2,7 +2,7 @@
 
 NewWave OWASP Security Lab. Mapped to OWASP LLM Top 10 (2025), MITRE ATLAS where noted below, and NIST AI RMF (see executive summary). Status values follow the course report Section 5.1 demo-status language.
 
-**In-lab capture count**: **7 of 10** OWASP LLM Top 10 (2025) risks. That word is **Reproduced-in-lab** on the dual-lab ladder (`owasp-dual-top10-lab/docs/claim_tense.md`). Dual-lab **Demonstrated** stays reserved for external primary evidence.
+Seven live captures, three architectural notes, ASI cited next door. That capture word is **Reproduced-in-lab** on the dual-lab ladder (`owasp-dual-top10-lab/docs/claim_tense.md`). **Demonstrated** stays the external-primary pin.
 
 Claim boundaries are inline in [executive-summary.md](executive-summary.md). Canonical copy: [scope-and-limitations.md](scope-and-limitations.md).
 

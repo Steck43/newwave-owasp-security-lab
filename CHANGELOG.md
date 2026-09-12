@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Coverage matrix uses Reproduced-in-lab for the seven in-lab captures. Demonstrated stays reserved for external primary evidence on the dual-lab roof.
+- Coverage lead drops Demonstrated 7 of 10. Seven live captures, three notes, ASI cited next door. Demonstrated stays the external-primary pin.
 - README leads with the attack a banking assistant can be talked into, states 2025-slug captures as fact rather than an order, and stops using Demonstrated for in-lab archives. That word stays reserved for external primary evidence on the dual-lab roof.
 
 ### Fixed
