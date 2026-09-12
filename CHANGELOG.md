@@ -10,11 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - CITATION.cff and `.zenodo.json` so a later tag can mint. No DOI on this record yet.
+- Architectural notes for LLM04 and LLM08. ASI01–ASI10 stay cited to `owasp-dual-top10-lab` `labctl`; this roof does not clone that fixture engine.
 - Repo floor: required CI (secrets, authorship, tests, ruff, craft voice/changelog/comments), local pre-commit, Keep a Changelog.
 - Floor template v2: push CI on every branch, `resolve_base.sh` (empty range exits 3), workflow lint (zizmor + actionlint), Dependabot (7-day cooldown), SECURITY.md.
 
 ### Changed
 
+- Coverage matrix uses Reproduced-in-lab for the seven in-lab captures. Demonstrated stays reserved for external primary evidence on the dual-lab roof.
 - README leads with the attack a banking assistant can be talked into, states 2025-slug captures as fact rather than an order, and stops using Demonstrated for in-lab archives. That word stays reserved for external primary evidence on the dual-lab roof.
 
 ### Fixed

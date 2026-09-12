@@ -6,7 +6,7 @@ The directory is the OWASP LLM Top 10 2025 edition. Captures stay on 2025 slugs 
 
 Seven of ten OWASP LLM risks have archived in-lab capture and screenshots. That is not the dual-lab sense of Demonstrated, which requires external primary evidence. LLM03 has an architectural assessment note; LLM04 and LLM08 are assessed, not captured. Coverage, evidence, and scope live in the [coverage matrix](docs/owasp_coverage.md), the [evidence index](docs/README.md), and the [executive summary](docs/executive-summary.md).
 
-The [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org) (ASI01 through ASI10) is in progress and is not shipped in this repo yet.
+The [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org) (ASI01 through ASI10) is cited, not shipped here. Run `labctl` against `owasp-dual-top10-lab/scenarios/asi/`. Do not clone that fixture engine into this roof.
 
 ## Archived in-lab captures
 
