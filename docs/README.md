@@ -29,7 +29,7 @@ Primary capture and analysis files live under `../evidence/`.
 
 ### Screenshot panels
 
-Generated from `phase2_capture.json`. One default and one custom panel per demonstrated scenario.
+Generated from `phase2_capture.json`. One default and one custom panel per live-capture scenario.
 
 - `evidence/screenshots/prompt_injection_*.png` (LLM01)
 - `evidence/screenshots/sensitive_information_disclosure_*.png` (LLM02)
