@@ -1,0 +1,17 @@
+{
+  "title": "newwave-owasp-security-lab",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Stecker, Landen"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "OWASP",
+    "LLM security",
+    "in-lab capture",
+    "agent security"
+  ],
+  "description": "In-lab LLM captures against the OWASP LLM Top 10 2025 edition. Seven of ten risks have archived capture. That is not Demonstrated in the dual-lab sense."
+}
