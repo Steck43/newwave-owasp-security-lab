@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: newwave-owasp-security-lab
+message: If you use this software, please cite it as below.
+type: software
+authors:
+  - family-names: Stecker
+    given-names: Landen
+license: MIT
+repository-code: https://github.com/Steck43/newwave-owasp-security-lab
+abstract: >
+  In-lab LLM captures against the OWASP LLM Top 10 2025 edition. Seven
+  of ten risks have archived capture. That is not Demonstrated in the
+  dual-lab sense. Live APIs are required to take a new capture.
+keywords:
+  - OWASP
+  - LLM security
+  - in-lab capture
+  - agent security
