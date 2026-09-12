@@ -3,6 +3,9 @@
   "upload_type": "software",
   "creators": [
     {
+      "name": "Kong, Wenhan"
+    },
+    {
       "name": "Stecker, Landen"
     }
   ],
@@ -13,5 +16,5 @@
     "in-lab capture",
     "agent security"
   ],
-  "description": "In-lab LLM captures against the OWASP LLM Top 10 2025 edition. Seven of ten risks have archived capture. That is not Demonstrated in the dual-lab sense."
+  "description": "In-lab LLM captures against the OWASP LLM Top 10 2025 edition. Base Streamlit demo by Wenhan Kong (cda59f1). Seven live captures and three architectural notes. That capture word is not Demonstrated on the dual-lab ladder."
 }
