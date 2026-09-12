@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Capture JSON prove: phase2 and phase3 files exist, carry required keys, and coverage-table paths that are not globs are on disk.
 - CITATION.cff and `.zenodo.json` so a later tag can mint. No DOI on this record yet.
 - Architectural notes for LLM04 and LLM08. ASI01–ASI10 stay cited to `owasp-dual-top10-lab` `labctl`; this roof does not clone that fixture engine.
 - Repo floor: required CI (secrets, authorship, tests, ruff, craft voice/changelog/comments), local pre-commit, Keep a Changelog.
