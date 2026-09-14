@@ -83,7 +83,7 @@ This project maps to OWASP Top 10 for LLM Applications 2025, OWASP Top 10 for Ag
 
 ## Contributors
 
-See [CONTRIBUTORS.md](CONTRIBUTORS.md). The base NewWave Streamlit demo (`cda59f1`) is by Wenhan Kong; the security assessment, added scenarios, evidence, and portfolio documentation are by Landen Stecker.
+See [CONTRIBUTORS.md](CONTRIBUTORS.md). The base NewWave Streamlit demo (`cda59f1`) is by Wenhan Kong; the security assessment, added scenarios, evidence, and portfolio documentation are by [Landen Stecker](https://github.com/Steck43).
 
 ## License
 
