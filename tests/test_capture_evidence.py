@@ -17,8 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
 COVERAGE = ROOT / "docs" / "owasp_coverage.md"
 PHASE2 = ROOT / "evidence" / "phase2_capture.json"
 PHASE3 = ROOT / "evidence" / "phase3_capture.json"
-PHASE2_SHA256 = "d92ffd3f90e89033fde59d4ff9a7720289c6a192ce0a46aac4bf0570bf25848b"
-PHASE3_SHA256 = "c7571be57a237d91b82065de5a1486c7c666d08e9e440b66eb040c54cdda861b"
+PHASE2_SHA256 = "71c4f90876121e8c7f88a8a2be89f156d52747933848709d114456698a45f2f0"
+PHASE3_SHA256 = "481ea3993236cc3870f645cdc1a481771cfe9ad1135643a8cc344b200a514db4"
 ROW_KEYS = {
     "scenario",
     "prompt_type",
