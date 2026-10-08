@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Tests that fail if a `control_that_held` sentence names a control the model or `future.result` call site does not set, and a test that calls `lab_safe_downstream_validate` so a stubbed SQL extractor cannot stay silent.
 - Capture-evidence prove: required keys plus a locked git-blob hash for phase2 and phase3 JSON. The lock is the index bytes, not the Windows worktree. An empty or swapped file fails the clone.
 - CITATION.cff and `.zenodo.json` so a later tag can mint. No DOI on this record yet.
 - Architectural notes for LLM04 and LLM08. ASI01–ASI10 stay cited to `owasp-dual-top10-lab` `labctl`; this roof does not clone that fixture engine.
@@ -17,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Evidence sentences name only controls the code runs. Unbounded consumption no longer claims input limits, token caps, rate limits, or timeouts the model calls do not set. Sensitive disclosure no longer claims RBAC, document permissions, retrieval filtering, redaction, or audit logging the lab does not run.
 - Contributors line names the author profile so a stranger can click once from this roof to `github.com/Steck43`.
 - Coverage lead drops Demonstrated 7 of 10. Seven live captures, three notes, ASI cited at the dual-lab GitHub URL. This lab's Reproduced-in-lab is Section 5.1, not the dual-lab machine gate.
 - CITATION.cff and `.zenodo.json` name Wenhan Kong for the `cda59f1` base demo, matching LICENSE.
