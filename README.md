@@ -8,6 +8,27 @@ Seven live captures, three architectural notes, ASI cited next door. Demonstrate
 
 The [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org) (ASI01 through ASI10) is cited, not shipped here. Run `labctl` against `owasp-dual-top10-lab/scenarios/asi/`. Do not clone that fixture engine into this roof.
 
+This is a course lab for CSEN 296A-1, Spring 2026. Wenhan Kong wrote the base Streamlit demo in `cda59f1`. Landen Stecker added the assessment, the later scenarios, and the captures. Names and the split are in [CONTRIBUTORS.md](CONTRIBUTORS.md).
+
+## Where it sits
+
+The floor is [capability-gate](https://github.com/Steck43/capability-gate): an allowlist decides a tool call before it runs. The atom plane on [aegis-atoms](https://github.com/Steck43/aegis-atoms) is the governance story on that same floor. The box is [isolation-layer](https://github.com/Steck43/isolation-layer). This repo is the earlier teaching lab. The later fixture lab is [owasp-dual-top10-lab](https://github.com/Steck43/owasp-dual-top10-lab).
+
+## Architecture
+
+![Unsafe and safer paths for one user request](docs/diagrams/unsafe-vs-safer.svg)
+
+The same request is sent on both instruction sets. The safer path tags untrusted context and the user text in `build_llm_input`. Both paths call the model. The returned text is what the phase capture files store.
+
+## Controls and status
+
+| Control | Status | Proof |
+| --- | --- | --- |
+| Unsafe and safer instruction sets | untested live | `UNSAFE_ASSISTANT_INSTRUCTIONS` at `app.py:32`; `SAFE_ASSISTANT_INSTRUCTIONS` at `app.py:52`. No test calls either constant. |
+| Input tagging | untested live | `build_llm_input` at `app.py:552`. No test calls it. |
+| Safer downstream check for LLM05 | built and tested | `lab_safe_downstream_validate` at `app.py:433`; `tests/test_controls_match_call_sites.py` calls it. |
+| Archived live captures | untested live | `evidence/phase2_capture.json` (LLM01, LLM02, LLM06, LLM07) and `evidence/phase3_capture.json` (LLM05, LLM09, LLM10). In-lab archives, not a CI model run. |
+
 ## Archived in-lab captures
 
 | Scenario | OWASP LLM 2025 | Capture | MITRE ATLAS |
@@ -80,6 +101,32 @@ tools/                 Capture and screenshot scripts
 ## References
 
 This project maps to OWASP Top 10 for LLM Applications 2025, OWASP Top 10 for Agentic Applications 2026, MITRE ATLAS, and NIST AI RMF 1.0, under the terms those projects publish at [genai.owasp.org](https://genai.owasp.org).
+
+## Tests and proof
+
+On this head, Windows PC, a venv with `requirements.txt` and pytest installed the way CI installs it: `python -m pytest -q` reported 6 passed. CI jobs on a pull request: `secrets`, `authorship`, `tests`, `lint`, `craft-voice`, `craft-changelog`, `craft-comments`, `workflow-lint`.
+
+The captures are archived model replies from the lab, not a production control. Strict gaps stay in the coverage notes: several ATLAS rows are marked with no clean one-to-one mapping.
+
+## Known limits
+
+It is a course lab. The Agentic list is cited and not shipped. `build_llm_input` and the two instruction constants have no test caller. External actions are simulated text. There is no measured attack-success rate for the tag split. NIST AI RMF 1.0 is a framework reference in the executive summary, not a tested control set.
+
+About text to set in repo settings (not part of this PR): OWASP LLM Top 10 (2025) lab: unsafe vs hardened finance assistant, live model captures mapped to MITRE ATLAS.
+
+## Related work
+
+1. OWASP GenAI Security Project (2024). OWASP Top 10 for LLM Applications 2025. https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/ Tests against: captures are keyed to 2025 slugs. LLM08:2025 is not LLM08:2026.
+2. OWASP GenAI Security Project (2025). OWASP Top 10 for Agentic Applications for 2026. https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/ Cited, not shipped. ASI scenarios live in owasp-dual-top10-lab.
+3. The MITRE Corporation. MITRE ATLAS. https://atlas.mitre.org/ Borrows technique IDs in the coverage matrix (AML.T0051, AML.T0057, AML.T0056, AML.T0048). Several rows are marked with no clean one-to-one.
+4. National Institute of Standards and Technology (2023). Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1. https://doi.org/10.6028/NIST.AI.100-1 Mapped in the executive summary. A framework reference, not a tested control set.
+5. Greshake, K., et al. (2023). Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection. arXiv:2302.12173. https://arxiv.org/abs/2302.12173 Tests against the class: the LLM01 scenario places attacker text in retrieved-document context.
+6. Hines, K., Lopez, G., Hall, M., Zarfati, F., Zunger, Y., and Kiciman, E. (2024). Defending Against Indirect Prompt Injection Attacks With Spotlighting. arXiv:2403.14720. https://arxiv.org/abs/2403.14720 Close to `build_llm_input()`, which wraps untrusted context and user text in separate tags. Plain tags, with no datamarking or encoding, and no measured attack-success rate.
+7. Rebedea, T., Dinu, R., Sreedhar, M., Parisien, C., and Cohen, J. (2023). NeMo Guardrails. arXiv:2310.10501. https://arxiv.org/abs/2310.10501 The safe configuration uses instruction-set policy and input tagging, not programmable runtime rails, and external actions are simulated as text.
+
+## Author
+
+Landen Stecker, agentic AI engineer and architect with security built in.
 
 ## Contributors
 

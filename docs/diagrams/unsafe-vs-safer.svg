@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img">
+  <title>Unsafe and safer paths for one user request</title>
+  <desc>The same user request goes through UNSAFE_ASSISTANT_INSTRUCTIONS and through SAFE_ASSISTANT_INSTRUCTIONS plus build_llm_input, then call_llm, then the phase capture files.</desc>
+  <rect width="720" height="280" fill="#f6f8fa"/>
+  <style>
+    text { font-family: ui-sans-serif, Segoe UI, sans-serif; font-size: 13px; fill: #1f2328; }
+    .box { fill: #ffffff; stroke: #1f2328; }
+  </style>
+  <rect class="box" x="20" y="110" width="140" height="52" rx="4"/>
+  <text x="90" y="132" text-anchor="middle">User request</text>
+  <text x="90" y="150" text-anchor="middle">app.py scenario</text>
+  <rect class="box" x="200" y="28" width="200" height="64" rx="4"/>
+  <text x="300" y="52" text-anchor="middle">Unsafe instructions</text>
+  <text x="300" y="70" text-anchor="middle">UNSAFE_ASSISTANT_INSTRUCTIONS</text>
+  <text x="300" y="84" text-anchor="middle">app.py:32</text>
+  <rect class="box" x="200" y="180" width="200" height="72" rx="4"/>
+  <text x="300" y="204" text-anchor="middle">Safer instructions</text>
+  <text x="300" y="222" text-anchor="middle">SAFE_ASSISTANT_INSTRUCTIONS</text>
+  <text x="300" y="240" text-anchor="middle">build_llm_input app.py:552</text>
+  <rect class="box" x="440" y="110" width="120" height="52" rx="4"/>
+  <text x="500" y="132" text-anchor="middle">call_llm</text>
+  <text x="500" y="150" text-anchor="middle">app.py:567</text>
+  <rect class="box" x="590" y="100" width="110" height="72" rx="4"/>
+  <text x="645" y="128" text-anchor="middle">Captures</text>
+  <text x="645" y="146" text-anchor="middle">phase2 JSON</text>
+  <text x="645" y="162" text-anchor="middle">phase3 JSON</text>
+  <path d="M160 128 H188 M188 120 L200 136 L188 152 Z" fill="#1f2328"/>
+  <path d="M160 144 H188 M188 196 L200 212 L188 228 Z" fill="#1f2328"/>
+  <path d="M400 60 H420 V128 H428 M428 120 L440 136 L428 152 Z" fill="none" stroke="#1f2328"/>
+  <path d="M400 216 H420 V144 H428" fill="none" stroke="#1f2328"/>
+  <path d="M560 136 H578 M578 128 L590 144 L578 160 Z" fill="#1f2328"/>
+</svg>
