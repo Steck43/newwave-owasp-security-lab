@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- README sections for the course-lab credit, the four-plane place, an unsafe-versus-safer diagram, a control table, and the related-work list. `build_llm_input` is labeled untested live because no test calls it.
 - Tests that fail if a `control_that_held` sentence names a control the model or `future.result` call site does not set, and a test that calls `lab_safe_downstream_validate` so a stubbed SQL extractor cannot stay silent.
 - Capture-evidence prove: required keys plus a locked git-blob hash for phase2 and phase3 JSON. The lock is the index bytes, not the Windows worktree. An empty or swapped file fails the clone.
 - CITATION.cff and `.zenodo.json` so a later tag can mint. No DOI on this record yet.
