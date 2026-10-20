@@ -45,7 +45,7 @@ Evidence: [phase2 capture](evidence/phase2_capture.json), [phase3 capture](evide
 
 ## Assessed, not captured
 
-| LLM ID | Status | Notes |
+| LLM ID | Kind | Notes |
 | --- | --- | --- |
 | LLM03 Supply Chain | Architectural note | [Assessment](evidence/llm03_supply_chain_assessment.md) |
 | LLM04 Data and Model Poisoning | Architectural note | [Assessment](evidence/llm04_data_poisoning_assessment.md) |
